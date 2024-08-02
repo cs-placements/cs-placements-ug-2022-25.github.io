@@ -1,1 +1,1 @@
-# cs-placements-ug-2022-25.github.io
+# mds22-placement-website
