@@ -1,1 +1,1 @@
-# mds22-placement-website
+# cs-placement-website
