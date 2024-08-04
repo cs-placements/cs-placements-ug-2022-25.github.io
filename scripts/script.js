@@ -109,18 +109,6 @@ function get_card(object) {
 
 let objects;
 
-<<<<<<< Updated upstream
-async function getData() {
-    try {
-        
-        // fetch call to google sheets api
-        let response = await fetch(apiUrl);
-        const data = await response.json();
-        objects = data.data;
-        console.log("Data : ", data);
-        get_default_card_arrangement(data.data);    
-        createSkillsBarChart(data.data);
-=======
 // async function getData() {
 //     const urlToFetch = currentTab.value==='BCA' ? apiUrl : api_BSC_URL 
 //     try {
@@ -133,7 +121,6 @@ async function getData() {
 //         console.log("Data : ", data);
 //         get_default_card_arrangement(data.data);
 //         createSkillsBarChart(data.data);
->>>>>>> Stashed changes
 
 
 //     } catch (error) {
@@ -538,6 +525,8 @@ $('.slick.marquee').slick({
 });
 //#endregion
 
+// const spinner = document.querySelector('.spinner');
+// console.log(spinner)
 
 async function getData() {
     console.log(currentTab)
@@ -546,17 +535,22 @@ async function getData() {
     try {
 
         // ajax call to google sheets api
+        // spinner.classList.add('active');
 
         let response = await fetch(urlToFetch);
         const data = await response.json();
-        objects = data.data;
-        // console.log("Data : ", data);
-        get_default_card_arrangement(data.data);
-        createSkillsBarChart(data.data);
-
+        if(data){
+            // spinner.classList.remove('active');
+            objects = data.data;
+            // console.log("Data : ", data);
+            get_default_card_arrangement(data.data);
+            createSkillsBarChart(data.data);
+        }
+        
 
     } catch (error) {
-        console.log(error)
+        console.log(error);
+        // spinner.classList.add('active');
     }
 }
 getData();
