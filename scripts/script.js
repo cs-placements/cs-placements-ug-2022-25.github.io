@@ -109,7 +109,7 @@ let objects;
 async function getData() {
     try {
         
-        // ajax call to google sheets api
+        // fetch call to google sheets api
         let response = await fetch(apiUrl);
         const data = await response.json();
         objects = data.data;
@@ -181,18 +181,18 @@ function search(objects, search_text) {
 $('#search-button').click(function () {
     const search_text = $('#search-text').val();
     if (search_text === "") {
-        get_default_card_arrangement(results);
+        get_default_card_arrangement(objects);
         return;
     }
     const search_text_lower = search_text.toLowerCase();
-    search(results, search_text_lower);
+    search(objects, search_text_lower);
 });
 
 // detect change in search text and get default card arrangement if search text is empty
 $('#search-text').on('input', function () {
     const search_text = $('#search-text').val();
     if (search_text === "") {
-        get_default_card_arrangement(results);
+        get_default_card_arrangement(objects);
     }
 });
 
@@ -214,7 +214,12 @@ function getPixelFromRem(remValue) {
 function getSkills(objects) {
     const skillMap = new Map();
     objects.forEach(object => {
-        const skills = (object['Programming Languages'] + ", " + object['Software and Technologies']).split(',').map(skill => skill.trim());
+    let program = object['Programming Languages']
+    let sof = object['Software and Technologies']
+    let skills = (object['Programming Languages'] + ", " + object['Software and Technologies']).split(',').map(skill => skill.trim());
+        console.log("Skills",skills);
+        skills = skills.filter(skill => skill!=='')
+        console.log("ab dekho meri skills : ",skills);
         skills.forEach(skill => {
             if (skillMap.has(skill)) {
                 skillMap.set(skill, skillMap.get(skill) + 1);
@@ -225,6 +230,9 @@ function getSkills(objects) {
     });
     const filteredSkills = new Map([...skillMap.entries()].filter(([skill, count]) => count > 10));
     const sortedSkills = new Map([...filteredSkills.entries()].sort((a, b) => b[1] - a[1]));
+    console.log("ye skillmap hai",skillMap);
+    console.log("Filtered Skills",filteredSkills);
+    console.log(sortedSkills);
     return sortedSkills;
 }
 
@@ -396,7 +404,7 @@ function createSkillsBarChart(objects) {
     const skillCategories = {
         "Programming Languages": ["Python", "JAVA", "R", "C/C++"],
         "Data Analysis Libraries": ["MS Excel", "Pandas", "Numpy", "SQL", "NLTK"],
-        "Data Visualization Tools": ["Power BI", "Seaborn", "Tableau", "Plotly"],
+        "Data Visualization Tools": ["Power BI", "Seaborn", "Tableau","HTML", "Plotly"],
         "Machine Learning Frameworks": ["PyTorch", "Tensorflow", "Keras"],
         "Miscellaneous": ["MATLAB", "SPSS"]
     };
@@ -424,6 +432,7 @@ function createSkillsBarChart(objects) {
             borderWidth: 1
         }]
     }
+    console.table(skillChartData.labels)
     const skillChartConfig = {
         type: 'bar',
         data: skillChartData,
@@ -449,6 +458,7 @@ function createSkillsBarChart(objects) {
         }
     }
     const skillCanvas = $('#skills-graph');
+    console.log(new Chart(skillCanvas, skillChartConfig));
     return new Chart(skillCanvas, skillChartConfig);
 }
 //#endregion
