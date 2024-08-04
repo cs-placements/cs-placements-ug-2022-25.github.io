@@ -5,14 +5,17 @@ const sheetId = '1ILJd4_xTGQuOTatUNwx_SsnmO48MH1wTs9KOaC4fNdw';
 // const apiUrl = `https://sheets.googleapis.com/v4/spreadsheets/${sheetId}/values/Sheet2?key=${apiKey}`;
 const apiUrl = `https://script.google.com/macros/s/AKfycbztDKow3WYvKEtFucyFeAuO1gETgmdXdPZ_O2qc5vaYJ8IO_k7SxZHGZvrkrXWn6pmwaQ/exec`;
 
+
+const api_BSC_URL = `https://script.googleusercontent.com/a/macros/bca.christuniversity.in/echo?user_content_key=WzAtF05fmAg38hBnTMtBJYyWCj-e09onM3WU2ajuugt6H-rT7G93jyaeaD9eyTi6iP_2-4lN_PffB0cMcTDyCT3CI6zZbUxzOJmA1Yb3SEsKFZqtv3DaNYcMrmhZHmUMi80zadyHLKAXVIAXMFeilut-I3CyTGKY_oulJgZ9nlm1RNvch3Hike3BvKilB0sae_YLqOKRFhXg6NEEbgbseNvWkb19KbWCMir_2rD8Npq8RW67c8ik40CesS1jo7roURemTIovdg8384pLDABBJlzLqmv46PQV&lib=MZW8fmbwR7vUqpezne26LPaUiuocs76YK`
+
 function convert_to_title_case(str) {
-    console.log("hello ji ",str)
+    console.log("hello ji ", str)
     return str.trim().toLowerCase().split(' ').map(function (word) {
 
         return word.toUpperCase()
     }).join(' ');
 }
-console.log("hello ji")
+// console.log("hello ji")
 let myData;
 function get_default_card_arrangement(objects) {
     console.log(objects)
@@ -36,7 +39,7 @@ function get_default_card_arrangement(objects) {
     // for (const object of objects) {
     //     
     // }
-    objects.forEach((object)=>{
+    objects.forEach((object) => {
         $('#students').append(get_card(object));
     })
 }
@@ -52,9 +55,9 @@ function get_card(object) {
     const linkedin_link = object['Linkedin'];
     const kaggle = object['Kaggle'];
     const portfolio_link = object['DS Portfolio Link'];
-   if (portfolio_link) {
-    console.log(portfolio_link);
-   }
+    if (portfolio_link) {
+        console.log(portfolio_link);
+    }
     let projects_truncated = projects;
     // if project is more is than length 50, then truncate it
     if (projects.length > 100) {
@@ -106,6 +109,7 @@ function get_card(object) {
 
 let objects;
 
+<<<<<<< Updated upstream
 async function getData() {
     try {
         
@@ -116,13 +120,27 @@ async function getData() {
         console.log("Data : ", data);
         get_default_card_arrangement(data.data);    
         createSkillsBarChart(data.data);
+=======
+// async function getData() {
+//     const urlToFetch = currentTab.value==='BCA' ? apiUrl : api_BSC_URL 
+//     try {
+
+//         // ajax call to google sheets api
+
+//         let response = await fetch(urlToFetch);
+//         const data = await response.json();
+//         objects = data.data;
+//         console.log("Data : ", data);
+//         get_default_card_arrangement(data.data);
+//         createSkillsBarChart(data.data);
+>>>>>>> Stashed changes
 
 
-    } catch (error) {
-        console.log(error)
-    }
-}
-getData();
+//     } catch (error) {
+//         console.log(error)
+//     }
+// }
+// getData();
 
 // if the page is at top remove the navbar-drop class from navbar else add
 $(window).scroll(function () {
@@ -235,6 +253,46 @@ function getSkills(objects) {
     console.log(sortedSkills);
     return sortedSkills;
 }
+
+
+
+let bcaTab = document.querySelector('[data-bca-portfolio]');
+let bscTab = document.querySelector('[data-bsc-portfolio]');
+
+let firstDiv = document.querySelector('[data-1st]');
+let secondDiv = document.querySelector('[data-2nd]');
+
+bcaTab.addEventListener("click", () => {
+    handleTabs(bcaTab);
+})
+bscTab.addEventListener("click", () => {
+    handleTabs(bscTab);
+})
+let currentTab = bcaTab;
+currentTab.classList.add('current-tab');
+firstDiv.classList.add('active');
+console.log(currentTab);
+
+function handleTabs(clickedTab) {
+    
+    if (clickedTab !== currentTab) {
+        // currentTab.classList.remove('active');
+        currentTab.classList.remove('current-tab');
+        currentTab = clickedTab;
+        // clickedTab.classList.add('active');
+        clickedTab.classList.add('current-tab')
+
+    }
+    if (!secondDiv.classList.contains('active')) {
+        secondDiv.classList.add('active');
+        firstDiv.classList.remove('active');
+    } else {
+        secondDiv.classList.remove('active');
+        firstDiv.classList.add('active');
+    }
+    getData()
+}
+
 
 Chart.register(ChartDataLabels);
 
@@ -419,7 +477,7 @@ function createSkillsBarChart(objects) {
 
     const skillBackgroundColors = Array.from(getSkills(objects).keys()).map(skill => {
         const category = Object.keys(skillCategories).find(category => skillCategories[category].includes(skill));
-        console.log("Hello ji i am in skill Background COlors",objects);
+        // console.log("Hello ji i am in skill Background COlors", objects);
         return categoryColors[category];
     });
 
@@ -479,3 +537,26 @@ $('.slick.marquee').slick({
     buttons: false
 });
 //#endregion
+
+
+async function getData() {
+    console.log(currentTab)
+    const urlToFetch = currentTab.value==='BCA' ? apiUrl : api_BSC_URL 
+    console.log(urlToFetch)
+    try {
+
+        // ajax call to google sheets api
+
+        let response = await fetch(urlToFetch);
+        const data = await response.json();
+        objects = data.data;
+        // console.log("Data : ", data);
+        get_default_card_arrangement(data.data);
+        createSkillsBarChart(data.data);
+
+
+    } catch (error) {
+        console.log(error)
+    }
+}
+getData();

@@ -9,6 +9,7 @@
     <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css" />
     <script src="https://kit.fontawesome.com/e2c53a38de.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="styles/style.css">
+    <link rel="stylesheet" href="./myStyle.css">
     <link rel="shortcut icon" href="assets/christ_logo_color_circular.png" type="image/x-icon">
     <title>CS E-Portfolio</title>
 </head>
@@ -57,6 +58,12 @@
             <h1 class="display-5 text-center">
                 Computer Science E-Portfolio
             </h1>
+            <button data-bca-portfolio class="tab" value="BCA">BCA E-Portfolio</button>
+            <button data-bsc-portfolio class="tab" value="BSC">BSC-CM</button>
+            <div>
+                <div data-1st class="firstDiv">BCA course lelo</div>
+                <div data-2nd class="secondDiv">Ye BSC hai</div>
+            </div>
         </section>
         <!-- Marquee -->
         <section id="hero">
@@ -86,7 +93,8 @@
                                 university and course, from the curriculum to the achievements of our students to the
                                 placement workflow.
                             </p>
-                            <a href="https://drive.google.com/uc?export=download&id=1j_UekYNbV4WwrhArt2lJqJ6SfNWIr00o" class="btn btn-info">Download Brochure</a>
+                            <a href="https://drive.google.com/uc?export=download&id=1j_UekYNbV4WwrhArt2lJqJ6SfNWIr00o"
+                                class="btn btn-info">Download Brochure</a>
                         </div>
                     </div>
                 </div>
@@ -108,14 +116,14 @@
                 </div>
             </div>
             <div class="graphs container-fluid">
-                <div class="row">
+                <!-- <div class="row">
                     <div class="graph col-md-6 justify-content-center">
                         <canvas id="sem-2-cs-elective"></canvas>
                     </div>
                     <div class="graph col md-6 justify-content-center">
                         <canvas id="sem-2-stat-elective"></canvas>
                     </div>
-                </div>
+                </div> -->
                 <div class="row">
                     <div class="graph col">
                         <canvas id="skills-graph"></canvas>
@@ -129,172 +137,187 @@
                     <h1 class="text-center">Student Profiles</h1>
                 </div>
             </div>
-            <div class="row justify-content-center">
-                <div class="col-md-8">
-                    <div class="input-group">
-                        <input type="text" class="form-control" id="search-text"
-                            placeholder="Search and filter results... (e.g: NLP, Cloud, Image Analytics, etc.)">
-                        <button class="btn btn-primary" id="search-button" type="button">Search</button>
-                    </div>
+            <div>
+                <div class="spinner">
+
                 </div>
-            </div>
-            <div class="container-fluid" id="profiles">
-                <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 justify-content-around" id="students">
-                    <!-- student cards will be inserted here -->
+                <div>
+                    <div class="row justify-content-center">
+                        <div class="col-md-8">
+                            <div class="input-group">
+                                <input type="text" class="form-control" id="search-text"
+                                    placeholder="Search and filter results... (e.g: NLP, Cloud, Image Analytics, etc.)">
+                                <button class="btn btn-primary" id="search-button" type="button">Search</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="container-fluid" id="profiles">
+                        <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 justify-content-around" id="students">
+                            student cards will be inserted here
+                        </div>
+                    </div>
                 </div>
             </div>
         </section>
+
+
         <section id="recruiters">
-        <h1 class="text-center">Our Persistent Recruiters</h1>
-        <div class="slick marquee">
+            <h1 class="text-center">Our Persistent Recruiters</h1>
+            <div class="slick marquee">
                 <div class="slick-slide">
                     <div class="inner">
-                        <img src="assets/company_logos/2560px-Eurofins_Scientific_Logo.svg.png" alt="Placeholder" height="78">
+                        <img src="assets/company_logos/2560px-Eurofins_Scientific_Logo.svg.png" alt="Placeholder"
+                            height="78">
                     </div>
                 </div>
-            
+
                 <div class="slick-slide">
                     <div class="inner">
                         <img src="assets/company_logos/1409565391575110636_1409565391575110636-removebg-preview.png"
                             alt="Placeholder" height="78">
                     </div>
                 </div>
-            
+
                 <div class="slick-slide">
                     <div class="inner">
                         <img src="assets/company_logos/580b57fcd9996e24bc43c4a1.png" alt="Placeholder" height="78">
                     </div>
                 </div>
-            
+
                 <div class="slick-slide">
                     <div class="inner">
                         <img src="assets/company_logos/5add80b5165215fa247d.png" alt="Placeholder" height="78">
                     </div>
                 </div>
-            
+
                 <div class="slick-slide">
                     <div class="inner">
                         <img src="assets/company_logos/629a09b5b04c5ae587c411bb.png" alt="Placeholder" height="78">
                     </div>
                 </div>
-            
+
                 <div class="slick-slide">
                     <div class="inner">
-                        <img src="assets/company_logos/Bi2i-with-bg-logo-removebg-preview.png" alt="Placeholder" height="78">
+                        <img src="assets/company_logos/Bi2i-with-bg-logo-removebg-preview.png" alt="Placeholder"
+                            height="78">
                     </div>
                 </div>
-            
+
                 <div class="slick-slide">
                     <div class="inner">
                         <img src="assets/company_logos/Citi.svg.png" alt="Placeholder" height="78">
                     </div>
                 </div>
-            
+
                 <div class="slick-slide">
                     <div class="inner">
-                        <img src="assets/company_logos/consilio-vector-logo-removebg-preview.png" alt="Placeholder" height="78">
+                        <img src="assets/company_logos/consilio-vector-logo-removebg-preview.png" alt="Placeholder"
+                            height="78">
                     </div>
                 </div>
-            
+
                 <div class="slick-slide">
                     <div class="inner">
                         <img src="assets/company_logos/D._E._Shaw_&amp;_Co._logo.png" alt="Placeholder" height="78">
                     </div>
                 </div>
-            
+
                 <div class="slick-slide">
                     <div class="inner">
                         <img src="assets/company_logos/download-removebg-preview (1).png" alt="Placeholder" height="78">
                     </div>
                 </div>
-            
+
                 <div class="slick-slide">
                     <div class="inner">
                         <img src="assets/company_logos/download-removebg-preview.png" alt="Placeholder" height="78">
                     </div>
                 </div>
-            
+
                 <div class="slick-slide">
                     <div class="inner">
-                        <img src="assets/company_logos/grant-thornton-vector-logo-removebg-preview.png" alt="Placeholder"
-                            height="78">
+                        <img src="assets/company_logos/grant-thornton-vector-logo-removebg-preview.png"
+                            alt="Placeholder" height="78">
                     </div>
                 </div>
-            
+
                 <div class="slick-slide">
                     <div class="inner">
                         <img src="assets/company_logos/hsbc-logo-1.png" alt="Placeholder" height="78">
                     </div>
                 </div>
-            
+
                 <div class="slick-slide">
                     <div class="inner">
                         <img src="assets/company_logos/IHS_Markit_logo.svg.png" alt="Placeholder" height="78">
                     </div>
                 </div>
-            
+
                 <div class="slick-slide">
                     <div class="inner">
                         <img src="assets/company_logos/image-removebg-preview.png" alt="Placeholder" height="78">
                     </div>
                 </div>
-            
+
                 <div class="slick-slide">
                     <div class="inner">
                         <img src="assets/company_logos/KPMG_logo.svg.png" alt="Placeholder" height="78">
                     </div>
                 </div>
-            
+
                 <div class="slick-slide">
                     <div class="inner">
-                        <img src="assets/company_logos/Kritter-Full-Logo-Transparent-Background.png" alt="Placeholder" height="78">
+                        <img src="assets/company_logos/Kritter-Full-Logo-Transparent-Background.png" alt="Placeholder"
+                            height="78">
                     </div>
                 </div>
-            
+
                 <div class="slick-slide">
                     <div class="inner">
                         <img src="assets/company_logos/MiQ_Logo-removebg-preview.png" alt="Placeholder" height="78">
                     </div>
                 </div>
-            
+
                 <div class="slick-slide">
                     <div class="inner">
-                        <img src="assets/company_logos/Perficient-Logo-HorzJPG-removebg-preview.png" alt="Placeholder" height="78">
+                        <img src="assets/company_logos/Perficient-Logo-HorzJPG-removebg-preview.png" alt="Placeholder"
+                            height="78">
                     </div>
                 </div>
-            
+
                 <div class="slick-slide">
                     <div class="inner">
-                        <img src="assets/company_logos/PRNE_Xoriant_Logo-removebg-preview.png" alt="Placeholder" height="78">
+                        <img src="assets/company_logos/PRNE_Xoriant_Logo-removebg-preview.png" alt="Placeholder"
+                            height="78">
                     </div>
                 </div>
-            
+
                 <div class="slick-slide">
                     <div class="inner">
                         <img src="assets/company_logos/quantiphi-inc-logo-vector-removebg-preview.png" alt="Placeholder"
                             height="78">
                     </div>
                 </div>
-            
+
                 <div class="slick-slide">
                     <div class="inner">
                         <img src="assets/company_logos/Syscloud_logo@2x.3ca6252c8cc99a8ffc85e4e2c6e6c1da225a3c48.png"
                             alt="Placeholder" height="78">
                     </div>
                 </div>
-            
+
                 <div class="slick-slide">
                     <div class="inner">
                         <img src="assets/company_logos/TOSHIBA_Logo.png" alt="Placeholder" height="78">
                     </div>
                 </div>
-            
+
                 <div class="slick-slide">
                     <div class="inner">
                         <img src="assets/company_logos/Whatfix_Logo_RGB_Color.png" alt="Placeholder" height="78">
                     </div>
                 </div>
-        </div>
+            </div>
         </section>
 
         <!-- Footer -->
@@ -313,7 +336,10 @@
                 <div class="footer-contact">
                     <div class="contact-person">
                         <h4>Connect with us</h4>
-                        <p><i class="fa-solid fa-arrow-up-right-from-square"></i>&nbsp;&nbsp;&nbsp;<a href="https://bit.ly/reg-mds-byc-24" class="link-danger link-offset-2 link-underline-opacity-25 link-underline-opacity-75-hover">Interested in recruiting?</a></p>
+                        <p><i class="fa-solid fa-arrow-up-right-from-square"></i>&nbsp;&nbsp;&nbsp;<a
+                                href="https://bit.ly/reg-mds-byc-24"
+                                class="link-danger link-offset-2 link-underline-opacity-25 link-underline-opacity-75-hover">Interested
+                                in recruiting?</a></p>
                         <p><i class="fa-solid fa-envelope"></i>&nbsp;&nbsp;&nbsp;<a
                                 href="mailto:cs.placements@christuniversity.in"
                                 class="link-primary link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover">cs.placements@christuniversity.in</a>
