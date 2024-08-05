@@ -213,12 +213,10 @@ function getPixelFromRem(remValue) {
 function getSkills(objects) {
     const skillMap = new Map();
     objects.forEach(object => {
-    let program = object['Programming Languages']
-    let sof = object['Software and Technologies']
     let skills = (object['Programming Languages'] + ", " + object['Software and Technologies']).split(',').map(skill => skill.trim());
-        console.log("Skills",skills);
+        // console.log("Skills",skills);
         skills = skills.filter(skill => skill!=='')
-        console.log("ab dekho meri skills : ",skills);
+        // console.log("ab dekho meri skills : ",skills);
         skills.forEach(skill => {
             if (skillMap.has(skill)) {
                 skillMap.set(skill, skillMap.get(skill) + 1);
@@ -229,9 +227,9 @@ function getSkills(objects) {
     });
     const filteredSkills = new Map([...skillMap.entries()].filter(([skill, count]) => count > 10));
     const sortedSkills = new Map([...filteredSkills.entries()].sort((a, b) => b[1] - a[1]));
-    console.log("ye skillmap hai",skillMap);
-    console.log("Filtered Skills",filteredSkills);
-    console.log(sortedSkills);
+    // console.log("ye skillmap hai",skillMap);
+    // console.log("Filtered Skills",filteredSkills);
+    // console.log(sortedSkills);
     return sortedSkills;
 }
 
@@ -251,7 +249,7 @@ bscTab.addEventListener("click", () => {
 })
 let currentTab = bcaTab;
 currentTab.classList.add('current-tab');
-firstDiv.classList.add('active');
+// firstDiv.classList.add('active');
 console.log(currentTab);
 
 function handleTabs(clickedTab) {
@@ -264,13 +262,13 @@ function handleTabs(clickedTab) {
         clickedTab.classList.add('current-tab')
 
     }
-    if (!secondDiv.classList.contains('active')) {
-        secondDiv.classList.add('active');
-        firstDiv.classList.remove('active');
-    } else {
-        secondDiv.classList.remove('active');
-        firstDiv.classList.add('active');
-    }
+    // if (!secondDiv.classList.contains('active')) {
+    //     secondDiv.classList.add('active');
+    //     firstDiv.classList.remove('active');
+    // } else {
+    //     secondDiv.classList.remove('active');
+    //     firstDiv.classList.add('active');
+    // }
     getData()
 }
 
@@ -470,7 +468,7 @@ function createSkillsBarChart(objects) {
             borderWidth: 1
         }]
     }
-    console.table(skillChartData.labels)
+    // console.table(skillChartData.labels)
     const skillChartConfig = {
         type: 'bar',
         data: skillChartData,
@@ -496,7 +494,7 @@ function createSkillsBarChart(objects) {
         }
     }
     const skillCanvas = $('#skills-graph');
-    console.log(new Chart(skillCanvas, skillChartConfig));
+    // console.log(new Chart(skillCanvas, skillChartConfig));
     return new Chart(skillCanvas, skillChartConfig);
 }
 //#endregion
@@ -518,9 +516,12 @@ $('.slick.marquee').slick({
 });
 //#endregion
 
-// const spinner = document.querySelector('.spinner');
-// console.log(spinner)
-
+const spinner = document.querySelector('.spinner');
+const spinnerTEXT = document.querySelector('.spinner-text');
+const studentHeading = document.querySelector('.student-heading')
+const studentSearchBar = document.querySelector('.student-searchBar');
+const studentContainer = document.querySelector('.student-Container');
+const skillsGraph = document.querySelector('.skillsGraph');
 async function getData() {
     console.log(currentTab)
     const urlToFetch = currentTab.value==='BCA' ? apiUrl : api_BSC_URL 
@@ -528,13 +529,24 @@ async function getData() {
     try {
 
         // ajax call to google sheets api
-        // spinner.classList.add('active');
+        spinner.classList.add('active');
+        spinnerTEXT.classList.add('active');
+        studentContainer.classList.remove('active');
+        // graphs.classList.remove('active');
+        skillsGraph.classList.remove('active');
+
+        console.log(studentContainer)
 
         let response = await fetch(urlToFetch);
         const data = await response.json();
+        spinner.classList.remove('active');
+        spinnerTEXT.classList.remove('active');
+        studentHeading.classList.add('active');
+        studentSearchBar.classList.add('active');
+        skillsGraph.classList.add('active');
         if(data){
-            // spinner.classList.remove('active');
             objects = data.data;
+            studentContainer.classList.add('active');
             // console.log("Data : ", data);
             get_default_card_arrangement(data.data);
             createSkillsBarChart(data.data);
@@ -544,6 +556,7 @@ async function getData() {
     } catch (error) {
         console.log(error);
         // spinner.classList.add('active');
+        // spinnerTEXT.classList.add('active');
     }
 }
 getData();

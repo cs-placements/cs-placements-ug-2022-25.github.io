@@ -58,8 +58,10 @@
             <h1 class="display-5 text-center">
                 Computer Science E-Portfolio
             </h1>
-            <button data-bca-portfolio class="tab" value="BCA">BCA E</button>
-            <button data-bsc-portfolio class="tab" value="BSC">BSC-CM</button>
+            <div class="btn-div">
+                <button data-bca-portfolio class="tab" value="BCA">BCA</button>
+                <button data-bsc-portfolio class="tab" value="BSC">BSC-CM</button>
+            </div>
             <div>
                 <div data-1st class="firstDiv">Hello BCA</div>
                 <div data-2nd class="secondDiv">Ye BSC h</div>
@@ -110,10 +112,18 @@
             </div>
         </section>
         <!-- Statistics -->
+
         <section class="container-fluid" id="stats">
             <h1 class="text-center">About the Class of 2022-25</h1>
             <div class="numbers container-fluid">
                 <div class="row row-cols-md-3">
+                </div>
+            </div>
+            <div class="spinner-div">
+                <div class="spinner"></div>
+                <div class="spinner-text">
+                    Please Wait...<br />
+                    Getting Student Data
                 </div>
             </div>
             <div class="graphs container-fluid">
@@ -125,23 +135,24 @@
                         <canvas id="sem-2-stat-elective"></canvas>
                     </div>
                 </div> -->
-                <div class="row">
+                <div class="row skillsGraph">
                     <div class="graph col">
                         <canvas id="skills-graph"></canvas>
                     </div>
                 </div>
         </section>
+
         <!-- Student Profiles -->
-        <section class="container-fluid" id="student-profiles">
+        <section class="container-fluid student-Container" id="student-profiles">
             <div class="row">
                 <div class="col-12">
-                    <h1 class="text-center">Student Profiles</h1>
+                    <h1 class="text-center student-heading">Student Profiles</h1>
                 </div>
             </div>
             <div>
-                
+
                 <div>
-                    <div class="row justify-content-center">
+                    <div class="row justify-content-center student-searchBar">
                         <div class="col-md-8">
                             <div class="input-group">
                                 <input type="text" class="form-control" id="search-text"
@@ -152,7 +163,7 @@
                     </div>
                     <div class="container-fluid" id="profiles">
                         <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 justify-content-around" id="students">
-                            student cards will be inserted here
+                            <!-- student cards will be inserted here -->
                         </div>
                     </div>
                 </div>
@@ -160,8 +171,11 @@
         </section>
 
 
+
         <section id="recruiters">
+            <hr />
             <h1 class="text-center">Our Persistent Recruiters</h1>
+            <br />
             <div class="slick marquee">
                 <div class="slick-slide">
                     <div class="inner">
