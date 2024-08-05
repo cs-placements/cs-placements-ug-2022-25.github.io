@@ -9,7 +9,6 @@ const apiUrl = `https://script.google.com/macros/s/AKfycbztDKow3WYvKEtFucyFeAuO1
 const api_BSC_URL = `https://script.googleusercontent.com/a/macros/bca.christuniversity.in/echo?user_content_key=WzAtF05fmAg38hBnTMtBJYyWCj-e09onM3WU2ajuugt6H-rT7G93jyaeaD9eyTi6iP_2-4lN_PffB0cMcTDyCT3CI6zZbUxzOJmA1Yb3SEsKFZqtv3DaNYcMrmhZHmUMi80zadyHLKAXVIAXMFeilut-I3CyTGKY_oulJgZ9nlm1RNvch3Hike3BvKilB0sae_YLqOKRFhXg6NEEbgbseNvWkb19KbWCMir_2rD8Npq8RW67c8ik40CesS1jo7roURemTIovdg8384pLDABBJlzLqmv46PQV&lib=MZW8fmbwR7vUqpezne26LPaUiuocs76YK`
 
 function convert_to_title_case(str) {
-    console.log("hello ji ", str)
     return str.trim().toLowerCase().split(' ').map(function (word) {
 
         return word.toUpperCase()
