@@ -15,7 +15,6 @@ function convert_to_title_case(str) {
         return word.toUpperCase()
     }).join(' ');
 }
-// console.log("hello ji")
 let myData;
 function get_default_card_arrangement(objects) {
     console.log(objects)
@@ -144,14 +143,10 @@ $(window).scroll(function () {
 //#region search bar functions
 // create a map of common abbreviations used in data science, such as nlp, iot, ml, etc. and include both the abbreviation and the full form as values
 const abbreviation_map = new Map();
-abbreviation_map.set('nlp', 'natural language processing');
-abbreviation_map.set('iot', 'internet of things');
+abbreviation_map.set('aws', 'amazon web services');
+abbreviation_map.set('sql', 'structured query language');
 abbreviation_map.set('ml', 'machine learning');
-abbreviation_map.set('dl', 'deep learning');
 abbreviation_map.set('ai', 'artificial intelligence');
-abbreviation_map.set('cv', 'computer vision');
-abbreviation_map.set('rl', 'reinforcement learning');
-abbreviation_map.set('powerbi', 'power bi');
 
 
 function search(objects, search_text) {
@@ -447,16 +442,16 @@ const statElectiveChart = new Chart(statElective, statElective_config);
 
 function createSkillsBarChart(objects) {
     const skillCategories = {
-        "Programming Languages": ["Python", "JAVA", "R", "C/C++"],
-        "Data Analysis Libraries": ["MS Excel", "Pandas", "Numpy", "SQL", "NLTK"],
-        "Data Visualization Tools": ["Power BI", "Seaborn", "Tableau","HTML", "Plotly"],
-        "Machine Learning Frameworks": ["PyTorch", "Tensorflow", "Keras"],
-        "Miscellaneous": ["MATLAB", "SPSS"]
+        "Languages": ["Python", "Kotlin","PHP", "C"],
+        "Libraries": ["MS Excel", "Pandas", "Numpy","Linux", "SQL", "Figma","JavaScript"],
+        "Data Visualization Tools": ["Power BI", "AWS","CSS","Java","MS Office"],
+        "Machine Learning Frameworks": ["PyTorch", "Tensorflow","Machine Learning"],
+        "Miscellaneous": ["HTML","SQL","Canva"]
     };
 
     const categoryColors = {
-        "Programming Languages": 'rgba(54, 162, 235, 0.6)',
-        "Data Analysis Libraries": 'rgba(75, 192, 192, 0.6)',
+        "Languages": 'rgba(54, 162, 235, 0.6)',
+        "Libraries": 'rgba(75, 192, 192, 0.6)',
         "Data Visualization Tools": 'rgba(255, 99, 132, 0.6)',
         "Machine Learning Frameworks": 'rgba(153, 102, 255, 0.6)',
         "Miscellaneous": 'rgba(255, 206, 86, 0.6)'
@@ -464,7 +459,6 @@ function createSkillsBarChart(objects) {
 
     const skillBackgroundColors = Array.from(getSkills(objects).keys()).map(skill => {
         const category = Object.keys(skillCategories).find(category => skillCategories[category].includes(skill));
-        // console.log("Hello ji i am in skill Background COlors", objects);
         return categoryColors[category];
     });
 
