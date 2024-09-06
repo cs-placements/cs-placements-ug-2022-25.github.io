@@ -57,11 +57,11 @@ function get_card(object) {
     }
     let projects_truncated = projects;
     // if project is more is than length 50, then truncate it
-    if (projects.length > 100) {
-        projects_truncated = projects.substring(0, 100) + "...";
+    //if (projects.length > 100) {
+      //  projects_truncated = projects.substring(0, 100) + "...";
         // add a learn more link to projects
-        projects_truncated += `<a href="${portfolio_link}#projects" class="">Read More</a>`;
-    }
+        //projects_truncated += `<a href="${portfolio_link}#projects" class="">Read More</a>`;
+    //}
     let kaggle_button = "";
     if (kaggle) {
         kaggle_button = `<a href="${kaggle}" target="_blank" class="btn btn-icon" title="Kaggle">
@@ -81,7 +81,7 @@ function get_card(object) {
                                 <h2 class="card-title">${name}</h2>
                                 <p class="card-text specialization"><b>Specialization</b>: ${specialization}</p>
                                 <p class="card-text skills"><b>Skills</b>: ${skills}</p>
-                                <p class="card-text projects"><b>Projects</b>: ${projects_truncated}</p>
+                                <p class="card-text projects"><b>Projects</b>: ${projects}</p>
 
                                 <div id="socials">
                                     <a href="${linkedin_link}" target="_blank" class="btn btn-icon" title="LinkedIn">
