@@ -56,6 +56,13 @@ function get_card(object) {
     if (portfolio_link) {
         console.log(portfolio_link);
     }
+    let specialization_truncated = specialization;
+    // if project is more is than length 50, then truncate it
+    if (specialization.length > 20) {
+        specialization_truncated = specialization.substring(0, 20) + "...";
+        // add a learn more link to projects
+        specialization_truncated += `<a href="${specialization}#projects" class="">Read More</a>`;
+    }
     let projects_truncated = projects;
     // if project is more is than length 50, then truncate it
     if (projects.length > 100) {
@@ -86,7 +93,7 @@ function get_card(object) {
                         <div class="col-8">
                             <div class="card-body">
                                 <h2 class="card-title">${name}</h2>
-                                <p class="card-text specialization"><b>Specialization</b>: ${specialization}</p>
+                                <p class="card-text specialization"><b>Specialization</b>: ${specialization_truncated}</p>
                                 <p class="card-text skills"><b>Skills</b>: ${skills_truncated}</p>
                                 <p class="card-text projects"><b>Projects</b>: ${projects_truncated}</p>
 
