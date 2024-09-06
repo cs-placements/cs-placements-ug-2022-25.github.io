@@ -18,25 +18,25 @@ let myData;
 function get_default_card_arrangement(objects) {
     console.log(objects)
     $('#students').empty();
-    // objects.sort((a, b) => {
-    //     const nameA = a['Name'].toLowerCase();
-    //     const nameB = b['Name'].toLowerCase();
-    //     if (nameA < nameB) {
-    //         return -1;
-    //     }
-    //     else if (nameA > nameB) {
-    //         return 1;
-    //     }
-    //     else {
-    //         return 0;
-    //     }
-    // });
+     objects.sort((a, b) => {
+         const nameA = a['Name'].toLowerCase();
+         const nameB = b['Name'].toLowerCase();
+         if (nameA < nameB) {
+             return -1;
+         }
+         else if (nameA > nameB) {
+             return 1;
+         }
+         else {
+             return 0;
+         }
+     });
     objects.sort((a, b) => a.Name.localeCompare(b.Name));
-    // console.log(objects)
+     console.log(objects)
     myData = objects;
-    // for (const object of objects) {
-    //     
-    // }
+     for (const object of objects) {
+         
+     }
     objects.forEach((object) => {
         $('#students').append(get_card(object));
     })
@@ -63,6 +63,12 @@ function get_card(object) {
         // add a learn more link to projects
         projects_truncated += `<a href="${portfolio_link}#projects" class="">Read More</a>`;
     }
+    let skills_truncated = skills;
+    if(skills.length>60){
+        skills_truncated=skills.substring(0, 60) + "...";
+        // add a learn more link to skills
+        skills_truncated += `<a href="${skills}#skills" class="">Read More</a>`;
+    }
     let kaggle_button = "";
     if (kaggle) {
         kaggle_button = `<a href="${kaggle}" target="_blank" class="btn btn-icon" title="Kaggle">
@@ -81,7 +87,7 @@ function get_card(object) {
                             <div class="card-body">
                                 <h2 class="card-title">${name}</h2>
                                 <p class="card-text specialization"><b>Specialization</b>: ${specialization}</p>
-                                <p class="card-text skills"><b>Skills</b>: ${skills}</p>
+                                <p class="card-text skills"><b>Skills</b>: ${skills_truncated}</p>
                                 <p class="card-text projects"><b>Projects</b>: ${projects_truncated}</p>
 
                                 <div id="socials">
@@ -106,26 +112,6 @@ function get_card(object) {
 }
 
 let objects;
-
-// async function getData() {
-//     const urlToFetch = currentTab.value==='BCA' ? apiUrl : api_BSC_URL 
-//     try {
-
-//         // ajax call to google sheets api
-
-//         let response = await fetch(urlToFetch);
-//         const data = await response.json();
-//         objects = data.data;
-//         console.log("Data : ", data);
-//         get_default_card_arrangement(data.data);
-//         createSkillsBarChart(data.data);
-
-
-//     } catch (error) {
-//         console.log(error)
-//     }
-// }
-// getData();
 
 // if the page is at top remove the navbar-drop class from navbar else add
 $(window).scroll(function () {
@@ -227,9 +213,6 @@ function getSkills(objects) {
     });
     const filteredSkills = new Map([...skillMap.entries()].filter(([skill, count]) => count > 10));
     const sortedSkills = new Map([...filteredSkills.entries()].sort((a, b) => b[1] - a[1]));
-    // console.log("ye skillmap hai",skillMap);
-    // console.log("Filtered Skills",filteredSkills);
-    // console.log(sortedSkills);
     return sortedSkills;
 }
 
@@ -262,13 +245,6 @@ function handleTabs(clickedTab) {
         clickedTab.classList.add('current-tab')
 
     }
-    // if (!secondDiv.classList.contains('active')) {
-    //     secondDiv.classList.add('active');
-    //     firstDiv.classList.remove('active');
-    // } else {
-    //     secondDiv.classList.remove('active');
-    //     firstDiv.classList.add('active');
-    // }
     getData()
 }
 
